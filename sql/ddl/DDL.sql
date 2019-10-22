@@ -118,6 +118,17 @@ CREATE TABLE transporte_cdmx.dbo.telefono_taller (
   )
 );
 
+-- Crea la tabla SIM
+CREATE TABLE transporte_cdmx.dbo.sim (
+  ICCID int NOT NULL,
+  tipo_de_red varchar(50) NULL,
+  asignada bit NULL,
+  CONSTRAINT PK_SIM PRIMARY KEY
+  (
+    ICCID
+  )
+);
+
 -- Crea la tabla vehículo
 CREATE TABLE transporte_cdmx.dbo.vehiculo (
   id_vehiculo varchar(50) COLLATE Modern_Spanish_CI_AS NOT NULL,
@@ -127,12 +138,18 @@ CREATE TABLE transporte_cdmx.dbo.vehiculo (
   latitud decimal(6,3) NULL,
   longitud decimal(6,3) NULL,
   ICCID int NOT NULL,
-  fecha_asignacion_sim datetime NULL
+  fecha_asignacion_sim datetime NULL,
   CONSTRAINT PK_vehiculo PRIMARY KEY 
   (
     id_vehiculo
+  ),
+  CONSTRAINT FK_Sim_Vehiculo FOREIGN KEY
+  (
+    ICCID
+  ) REFERENCES transporte_cdmx.dbo.sim (
+    ICCID
   )
-)
+);
 
 -- Crea la tabla reparacion
 CREATE TABLE transporte_cdmx.dbo.reparacion (
