@@ -36,3 +36,8 @@ Nota1: El comando debe de ejecutarse con el usuario SA ya que usa la base de dat
 Nota2: Puede que en algunos casos se deba especificar el path completo para el comando sqlcmd. Para la versión de Docker el path es '/opt/mssql-tools/bin' con lo que el comando quedaría: 
 
 /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "[PASSWORD]" -i DDL.sql
+
+Modificaciones hechas al modelo de la base de datos:
+Decidimos debido a la manera en la que se maneja las llaves en SQL Server, que lo mejor era deshacernos de las subclases para los distintos tipos de transporte colectivo, y decidimos crear una entidad que tuviera el id y que hiciéramos referencia a esta tabla en las situaciones donde se podía hacer referencia a cualquier tipo de transporte. 
+Lo que hicimos fue crear una relación Vehículo, la cual tiene a su id como atributo y lo pasa como llave foránea a otras dos relaciones: Colectivo y Taxi. 
+No perdimos información pues el tipo de transporte queda guardado en Colectivo. 
