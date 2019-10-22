@@ -3,13 +3,13 @@ USE master;
 -- Crea la base de datos si no existe, en caso contrario la elimina antes de crearla.
 IF EXISTS (SELECT 1 FROM sys.databases WHERE [name] = 'transporte_cdmx')
 BEGIN
-  PRINT "YA EXISTE LA BASE DE DATOS: 'transporte_cdmx'";
-  PRINT "ELIMINANDO...";
+  PRINT N'YA EXISTE LA BASE DE DATOS: transporte_cdmx';
+  PRINT N'ELIMINANDO...';
   DROP DATABASE transporte_cdmx;
-  PRINT "BASE DE DATOS ELIMINADA.";
+  PRINT N'BASE DE DATOS ELIMINADA.';
 END
 
-PRINT "CREANDO BASE DE DATOS: 'transporte_cdmx'";
+PRINT N'CREANDO BASE DE DATOS: transporte_cdmx';
 CREATE DATABASE transporte_cdmx
   ON PRIMARY (
     NAME = transporte_cdmx,
@@ -26,7 +26,7 @@ CREATE DATABASE transporte_cdmx
     FILEGROWTH = 2MB
   );
 GO
-PRINT "BASE DE DATOS CREADA: 'transporte_cdmx'";
+PRINT N'BASE DE DATOS CREADA: transporte_cdmx';
 
 -- Crea la tabla usuario.
 CREATE TABLE transporte_cdmx.dbo.usuario (
@@ -351,4 +351,4 @@ CREATE TABLE transporte_cdmx.dbo.taxi (
     numero_sitio
   )
 );
-PRINT "TODAS LAS TABLAS CREADAS CON ÉXITO"
+PRINT N'TODAS LAS TABLAS CREADAS CON ÉXITO.'
