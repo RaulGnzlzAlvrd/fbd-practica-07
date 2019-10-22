@@ -321,11 +321,17 @@ CREATE TABLE transporte_cdmx.dbo.taxi (
   (
     id_vehiculo
   ),
-  CONSTRAINT FK_Taxi FOREIGN KEY
+  CONSTRAINT FK_IDTaxi FOREIGN KEY
   (
     id_vehiculo
   ) REFERENCES transporte_cdmx.dbo.vehiculo (
     id_vehiculo
+  ),
+  CONSTRAINT FK_Taxi_Sitio FOREIGN KEY
+  (
+    numero_sitio
+  ) REFERENCES transporte_cdmx.dbo.sitio (
+    numero_sitio
   )
 );
 PRINT "TODAS LAS TABLAS CREADAS CON ÉXITO"
